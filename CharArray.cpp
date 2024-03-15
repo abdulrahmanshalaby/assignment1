@@ -32,3 +32,21 @@ char *CharArray::operator--(int) {
     return array;
 }
 
+CharArray CharArray::operator+(const CharArray &right) {
+    CharArray r;
+    r.array=new char(strlen(array)+ strlen(right.array));
+    r.size= sizeof(array)+ sizeof(right.array);
+    strcpy(r.array,array);
+    for (int i = strlen(array); i <r.size  ; ++i) {
+        r.array[i]=right.array[i- strlen(array)];
+
+
+    }
+    return r;
+}
+
+char *CharArray::getarray() {
+    return array;
+}
+
+

@@ -11,11 +11,19 @@ class CharArray {
     int size;
     char*array;
 public:
+    CharArray(){
+
+    }
     CharArray(char *f);
+
+
+    char*getarray();
+
     ~CharArray();
     // prefix increment
     char* operator++();
     char* operator--(int);
+    CharArray operator+(const CharArray &right);
 };
 
 
