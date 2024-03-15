@@ -23,3 +23,12 @@ char *CharArray::operator++() {
     return array;
 }
 
+char *CharArray::operator--(int) {
+    for (int i = 0; i < size; ++i) {
+        array[i]--;
+
+
+    }
+    return array;
+}
+

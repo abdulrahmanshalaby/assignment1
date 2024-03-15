@@ -15,6 +15,7 @@ public:
     ~CharArray();
     // prefix increment
     char* operator++();
+    char* operator--(int);
 };
 
 
