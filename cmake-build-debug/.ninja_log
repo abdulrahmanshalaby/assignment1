@@ -1,0 +1,17 @@
+# ninja log v5
+17	1285	7321561608616975	CMakeFiles/untitled.dir/main.cpp.obj	f14c6f018021679c
+1287	2029	7321561616012322	untitled.exe	fa47a05db4bcdbae
+19	953	7322012069599146	build.ninja	dafaff225c34c973
+64	1279	7322012086412808	CMakeFiles/untitled.dir/main.cpp.obj	f14c6f018021679c
+44	1281	7322012086412808	CMakeFiles/untitled.dir/CharArray.cpp.obj	8241a9f70dd599d9
+1282	2087	7322012094473538	untitled.exe	108cc0164ddccc2
+16	1422	7322013012852206	CMakeFiles/untitled.dir/main.cpp.obj	f14c6f018021679c
+1424	1810	7322013016711924	untitled.exe	108cc0164ddccc2
+29	1881	7322017651444867	CMakeFiles/untitled.dir/main.cpp.obj	f14c6f018021679c
+52	1884	7322017651487237	CMakeFiles/untitled.dir/CharArray.cpp.obj	8241a9f70dd599d9
+1885	2159	7322017654252615	untitled.exe	108cc0164ddccc2
+26	943	7322022268891882	CMakeFiles/untitled.dir/main.cpp.obj	f14c6f018021679c
+44	946	7322022268921811	CMakeFiles/untitled.dir/CharArray.cpp.obj	8241a9f70dd599d9
+947	1424	7322022273055052	untitled.exe	108cc0164ddccc2
+5	839	7322023525077924	CMakeFiles/untitled.dir/CharArray.cpp.obj	8241a9f70dd599d9
+842	1076	7322023527375096	untitled.exe	108cc0164ddccc2
