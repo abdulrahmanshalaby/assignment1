@@ -37,8 +37,9 @@ CharArray CharArray::operator+(const CharArray &right) {
     r.array=new char(strlen(array)+ strlen(right.array));
     r.size= sizeof(array)+ sizeof(right.array);
     strcpy(r.array,array);
-    for (int i = strlen(array); i <r.size  ; ++i) {
-        r.array[i]=right.array[i- strlen(array)];
+    r.array[strlen(array)]= ' ';
+    for (int i = strlen(array)+1; i <r.size  ; ++i) {
+        r.array[i]=right.array[i- strlen(array)-1];
 
 
     }

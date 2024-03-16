@@ -12,7 +12,6 @@ class CharArray {
     char*array;
 public:
     CharArray(){
-
     }
     CharArray(char *f);
 
