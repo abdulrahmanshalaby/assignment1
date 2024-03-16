@@ -45,9 +45,12 @@ CharArray CharArray::operator+(const CharArray &right) {
     }
     return r;
 }
-
-char *CharArray::getarray() {
-    return array;
+char CharArray:: first(){
+    return array[0];
 }
+char CharArray:: last(){
+    return array[strlen(array)-1];
+}
+
 
 

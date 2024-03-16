@@ -5,8 +5,10 @@
 #ifndef UNTITLED_CHARARRAY_H
 #define UNTITLED_CHARARRAY_H
 #include <cstring>
+#include <utility>
 #include<iostream>
-
+#include <bits/stdc++.h>
+using namespace std;
 class CharArray {
     int size;
     char*array;
@@ -19,15 +21,18 @@ public:
 
 // accessor of array
     char*getarray();
-
-    ~CharArray();
+//deconstructor
+ ~CharArray();
     // prefix increment
     char* operator++();
     //postfix decrement
     char* operator--(int);
     // joins 2 char arrays together
     CharArray operator+(const CharArray &right);
+char first();
+char last();
 };
+
 
 
 #endif //UNTITLED_CHARARRAY_H
