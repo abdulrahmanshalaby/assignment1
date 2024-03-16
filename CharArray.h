@@ -14,7 +14,7 @@ public:
     //default constructor
     CharArray(){
     }
-    // paramatarized constructor with char array
+    // paramaterized constructor with char array
     CharArray(char *f);
 
 // accessor of array
