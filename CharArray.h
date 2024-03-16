@@ -11,17 +11,21 @@ class CharArray {
     int size;
     char*array;
 public:
+    //default constructor
     CharArray(){
     }
+    // paramatarized constructor with char array
     CharArray(char *f);
 
-
+// accessor of array
     char*getarray();
 
     ~CharArray();
     // prefix increment
     char* operator++();
+    //postfix decrement
     char* operator--(int);
+    // joins 2 char arrays together
     CharArray operator+(const CharArray &right);
 };
 
