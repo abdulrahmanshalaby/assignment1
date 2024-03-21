@@ -10,12 +10,13 @@ class CharArray {
 
 public:
     //default constructor
-    CharArray(){
+    CharArray() {
+
     }
 
     // paramaterized constructor with char array
     CharArray(string f){
-        size= f.size();
+        size= f.length();
 
         array=new char(size);
         strcpy(array,f.c_str());
@@ -30,7 +31,7 @@ public:
 
     // prefix increment
     char* operator++(){
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < strlen(array); ++i) {
             array[i]++;
 
         }
@@ -38,27 +39,45 @@ public:
     }
     //postfix decrement
     char* operator--(int){
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < strlen(array); ++i) {
             array[i]--;
-
 
         }
         return array;
     }
+
     // joins 2 char arrays together
-    CharArray operator+(const CharArray &right){
+    CharArray operator+(const CharArray &right) {
         CharArray r;
-        r.array=new char(this->length()+ strlen(right.array));
-        r.size= this->length()+ strlen(right.array);
-        strcpy(r.array,array);
-        r.array[strlen(array)]= ' ';
-        for (int i = strlen(array)+1; i <r.size  ; ++i) {
-            r.array[i]=right.array[i- strlen(array)-1];
-
-
-        }
+        int totalLength = this->length() + strlen(right.array);
+        r.array = new char[totalLength + 1]; // +1 for the null terminator
+        strcpy(r.array, array); // Copy the first array
+        strcat(r.array, right.array);// Concatenate the second array
+        r.size=r.length();
         return r;
     }
+    CharArray& operator=(const CharArray& other) {
+        if (this != &other) {
+            delete[] array; // Free existing memory
+            size = other.size;
+            array = new char[size + 1]; // Allocate new memory
+            strcpy(array, other.array); // Copy data
+        }
+        return *this;
+    }
+    // Friend function to overload *<int>
+        friend CharArray operator*(const CharArray& obj, int times) {
+            CharArray result; // Create a new CharArray object
+            result.size = (strlen(obj.array))* times; // Calculate the size of the resulting array
+            result.array = new char[result.size+1]; // Allocate memory for the resulting array
+        result.array[0] = '\0';
+        // Repeat the array content 'times' number of times
+            for (int i = 0; i < times; ++i) {
+                strcat(result.array, obj.array);
+            }
+            return result; // Return the resulting CharArray object
+    }
+
 
     char first(){
         return array[0];
@@ -68,13 +87,13 @@ public:
         return array[strlen(array) - 1];
     }
     void reverse(){
-        for (int i = size; i >=1 ; i--) {
+        for (int i = strlen(array); i >=1 ; i--) {
             cout<<array[i-1];
         }
         cout<<endl;
     }
     int length(){
-        return size;
+        return strlen(array);
     }
     char &operator[](int i){
         return array[i];
@@ -105,10 +124,19 @@ while(m!=13){
     if(m==1){
         string g;
         cout<<"add new string: ";
-        cin>>g;
+       cin>>g;
         strings.push_back(CharArray(g));
         cout<<"string added"<<endl;
 
+    }
+   else if (m==2){
+        int l;
+        cout<<"enter string number "<<endl;
+        cin>>n;
+        cout<<"enter other string number"<<endl;
+        cin>>l;
+        strings[l-1]=strings[n-1];
+        cout<<"string copied to destination"<<endl;
     }
    else if(m==3){
        cout<<"enter string number "<<endl;
@@ -116,11 +144,8 @@ while(m!=13){
 string p;
 cout<<"What string to concatenate? "<<endl;
 cin>>p;
-CharArray e(p);
 CharArray r;
-r=strings[n-1]+p;
-strings[n-1]=r;
-cout<<" String concatenated to a new string: "<<r.getarray()<<endl;
+cout<<" String concatenated to a new string: "<<(strings[n-1]+p).getarray()<<endl;
     }
    else if (m==4){
        cout<<"enter string number";
@@ -158,6 +183,14 @@ cout<<" String concatenated to a new string: "<<r.getarray()<<endl;
         cin>>n;
         cout<<"first letter: "<<strings[n-1].first()<<endl;
         cout<<"last letter: "<<strings[n-1].last()<<endl;
+   }
+   else if(m==10){
+       int i;
+        cout<<"enter string number ";
+        cin>>n;
+        cout<<"enter number to multiply: ";
+        cin>>i;
+        cout<<(strings[n-1]*i).getarray()<<endl;
    }
    else if(m==11){
         cout<<"enter string number ";
