@@ -1,6 +1,3 @@
-
-
-using namespace std;
 #include <cstring>
 #include <utility>
 #include <bits/stdc++.h>
@@ -8,7 +5,7 @@ using namespace std;
 using namespace std;
 class CharArray {
     int size;
-    char*array;
+    char *array;
 public:
     //default constructor
     CharArray(){
@@ -65,12 +62,20 @@ public:
         return array[0];
     }
 
-    char last(){
-        return array[strlen(array)-1];
+    char last() {
+        return array[strlen(array) - 1];
+    }
+    char *reverse(){
+        for (int i = size; i >=1 ; i--) {
+            cout<<array[i-1];
+        }
+    }
+    int length(){
+        return size;
     }
 };
 
 int main() {
-CharArray e("newstr"); CharArray s("Object Oriented Programming");
-
+    CharArray e("newstr");
+    CharArray s("Object Oriented Programming");
 }
