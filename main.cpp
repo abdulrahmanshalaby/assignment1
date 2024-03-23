@@ -5,22 +5,26 @@
 #include<vector>
 using namespace std;
 class CharArray {
+
     int size;
     char *array;
-
+static int maxsize;
 public:
     //default constructor
-    CharArray() {
-
-    }
+    CharArray() = default;
 
     // paramaterized constructor with char array
-    CharArray(string f){
+    CharArray(const string& f){
         size= f.length();
-
         array=new char(size);
         strcpy(array,f.c_str());
 
+       //for counting biggest string
+        if(size>maxsize)
+        maxsize=size;
+    }
+     static int getarraymax(){
+        return maxsize;
     }
 
 // accessor of array
@@ -56,6 +60,7 @@ public:
         r.size=r.length();
         return r;
     }
+    //copy constructor
     CharArray& operator=(const CharArray& other) {
         if (this != &other) {
             delete[] array; // Free existing memory
@@ -78,31 +83,35 @@ public:
             return result; // Return the resulting CharArray object
     }
 
-
+//first element in array
     char first(){
         return array[0];
     }
-
+// last element in array
     char last() {
         return array[strlen(array) - 1];
     }
+    //reverse array
     void reverse(){
         for (int i = strlen(array); i >=1 ; i--) {
             cout<<array[i-1];
         }
         cout<<endl;
     }
+    //returns length of array
     int length(){
         return strlen(array);
     }
+    // overloading brackets
     char &operator[](int i){
         return array[i];
     }
 
 
 };
-
+int CharArray::maxsize=0;
 int main() {
+    //creating a vector to contain all strings
     vector<CharArray>strings;
     cout<<"1- Add a new String\n"
           "2- Copy a string to another\n"
@@ -124,7 +133,8 @@ while(m!=13){
     if(m==1){
         string g;
         cout<<"add new string: ";
-       cin>>g;
+        cin.ignore();
+        getline(cin,g);
         strings.push_back(CharArray(g));
         cout<<"string added"<<endl;
 
@@ -141,21 +151,30 @@ while(m!=13){
    else if(m==3){
        cout<<"enter string number "<<endl;
        cin>>n;
-string p;
-cout<<"What string to concatenate? "<<endl;
-cin>>p;
-CharArray r;
-cout<<" String concatenated to a new string: "<<(strings[n-1]+p).getarray()<<endl;
+       string p;
+       cout<<"What string to concatenate? "<<endl;
+        cin.ignore();
+       getline(cin,p);
+       CharArray r;
+       cout<<" String concatenated to a new string: "<<(strings[n-1]+p).getarray()<<endl;
+
     }
    else if (m==4){
        cout<<"enter string number";
        cin>>n;
        cout<<"string reversed: " ;
-       strings[n-1].reverse();
+      strings[n-1].reverse();
    }
    else if (m==5){
        cout<<"enter string number ";cin>>n;
        cout<<strings[n-1].length()<<endl;
+   }
+   else if (m==6){
+        for (int i = 0; i < strings.size(); ++i) {
+            if((strings[i].length()==CharArray::getarraymax())){
+                cout<<"biggest string is: "<<strings[i].getarray()<<" with size: "<< strings[i].length()<<endl;
+            }
+        }
    }
    else if(m==7){
        int i;
